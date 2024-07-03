@@ -1,0 +1,382 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.header {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: transparent;
+    position: fixed;
+    top: 0;
+    transition: .3s ease;
+    z-index: 20;
+}
+
+.header.active {
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.header.active .hamburger svg {
+    stroke: black;
+}
+
+.header.active .nav a {
+    color: black;
+}
+
+.header .container {
+    width: 85%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.nav a {
+    color: white;
+    transition: .3s ease;
+    font-size: 20px;
+}
+
+.nav a:hover {
+    opacity: .8;
+}
+
+.top-header {
+    width: 100%;
+    height: 100vh;
+    background-image: url('https://wallpapers.com/images/hd/psychology-background-2h35ezbmi9cicwt3.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+#home,
+#sss,
+#pricing,
+#contact {
+    height: 100vh;
+}
+
+.top-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.top-header .container {
+    width: 85%;
+    display: flex;
+    justify-content: end;
+}
+
+.home-mid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    width: 40%;
+    text-align: center;
+}
+
+.home-mid h1 {
+    font-size: 48px;
+    font-weight: bold;
+    color: white;
+}
+
+.home-mid p {
+    font-size: 18px;
+    color: white;
+}
+
+.home-mid a {
+    font-size: 18px;
+    color: white!important;
+    border: 1px solid white;
+    border-radius: 20px;
+    transition: .3s ease;
+    cursor: pointer;
+    padding: 12px;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.home-mid a:hover {
+    background-color: white;
+    color: #3ebfbb!important;
+}
+
+.hamburger {
+    display: none;
+}
+
+@media screen and (max-width: 880px) {
+    .top-header .container {
+        justify-content: center;
+    }
+    .home-mid {
+        width: 95%;
+    }
+    .header .container {
+        width: 95%;
+    }
+    .nav {
+        display: none;
+    }
+    .hamburger {
+        display: block;
+    }
+    #sss .container {
+        width: 95%;
+    }
+    #contact .container {
+        width: 95%;
+    }
+    .contact-right {
+        width: 100% !important;
+        margin-top: 20px;
+    }
+    .question-header-left {
+        font-size: 16px!important;
+    }
+}
+
+.mobile-menu {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    background-color: white;
+    left: -2000px;
+    transition: .3s ease;
+    position: fixed;
+    top: 0;
+    align-items: center;
+    gap: 30px;
+    cursor: pointer;
+    padding-top: 30px;
+}
+
+.mobile-x {
+    display: flex;
+    justify-content: end;
+    width: 80%;
+}
+
+.mobile-menu.active {
+    left: 0px;
+}
+
+.mobile-menu a {
+    font-size: 20px;
+    color: black;
+}
+
+#pricing {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.pricing-card {
+    padding: 30px;
+    border-radius: 6px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.pricing-card h4 {
+    font-size: 24px;
+}
+
+.pricing-card .features {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 30px;
+}
+
+.pricing-card .features p {
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.pricing-card .features svg {
+    stroke: green;
+}
+
+.pricing-card .buy-button {
+    margin-top: 20px;
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid green;
+    color: green;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.pricing-card .buy-button:hover {
+    color: white;
+    background-color: green;
+}
+
+#sss {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1F6EB6;
+}
+
+#sss .container {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    width: 85%;
+}
+
+.question-container {
+    border-radius: 6px;
+    width: 100%;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.question-header {
+    width: 100%;
+    display: flex;
+    padding: 10px;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.question-header-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.question-header-left {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.question-answer {
+    padding: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: .3s;
+}
+
+.question-container.active .question-answer {
+    max-height: none;
+    padding: 10px;
+}
+
+#contact {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#contact .container {
+    width: 85%;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    flex-wrap: wrap;
+}
+
+.contact-left {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.contact-left p {
+    font-size: 18px;
+}
+
+.contact-right {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 30%;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-label {
+    font-size: 18px;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.input-container input,
+.input-container textarea {
+    padding: 6px;
+    padding-left: 12px;
+    padding-right: 12px;
+    border-radius: 6px;
+    border: 1px solid gainsboro;
+}
+
+.form-submit {
+    width: 100%;
+    padding: 6px;
+    border: 1px solid green;
+    background-color: transparent;
+    color: green;
+    transition: .3s ease;
+    border-radius: 6px;
+}
+
+.form-submit:hover {
+    background-color: green;
+    color: white;
+}
+
+footer {
+    width: 100%;
+    background-color: black;
+    color: white;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+}
