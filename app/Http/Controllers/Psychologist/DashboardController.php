@@ -25,7 +25,9 @@ class DashboardController extends Controller
 
         $totalPriceCard = $todayAppointmentsCard->sum('price');
 
+        $appointments = Appointment::where('user_id', $request->user()->id)->get();
 
-        return view('office.psychologist.index', compact('todayAppointments', 'totalPrice', 'office', 'totalPriceCard', 'totalPriceCash', 'todayAppointmentsCard', 'todayAppointmentsCash'));
+
+        return view('office.psychologist.index', compact('todayAppointments', 'appointments', 'totalPrice', 'office', 'totalPriceCard', 'totalPriceCash', 'todayAppointmentsCard', 'todayAppointmentsCash'));
     }
 }

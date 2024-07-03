@@ -49,9 +49,47 @@
 
    
 </div>
+
+<div id="calendar"></div>
 @endsection
 
 
 @section('js')
-        
+<script>
+
+    document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+          initialView: 'dayGridMonth',
+          timezone: 'UTC',
+          events: [
+                @foreach ($appointments as $appointment)
+                    {
+                        id: {{ $appointment->id }},
+                        title: "{{ $appointment->client_name }} - {{ $appointment->hour }}",
+                        start: "{{ $appointment->date }}",
+                        location: "{{ $appointment->room->name }}",
+                        backgroundColor: '#3788d8',
+                        borderColor: '#3788d8',
+                        textColor: '#ffffff'
+                    },
+                @endforeach
+            ]
+        });
+        calendar.render();
+      });
+
+      const events = [
+                @foreach ($appointments as $appointment)
+                    {
+                        title: "{{ $appointment->client_name }}",
+                        start: "{{ $appointment->date }}",
+                        location: "{{ $appointment->room->name }}",
+                        backgroundColor: '#3788d8',
+                        borderColor: '#3788d8',
+                        textColor: '#ffffff'
+                    },
+                @endforeach
+            ]
+</script>
 @endsection
