@@ -22,6 +22,31 @@
 
     <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
 
+    <style>
+        @media screen and (max-width: 500px) {
+            .sidebar {
+            width: 100%;
+            height: 80px;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            flex-direction: row;
+            z-index: 100;
+            justify-content: center;
+        }
+
+        .sidebar img {
+            display: none;
+        }
+
+        .sidebar-items {
+            flex-direction: row;
+            justify-content: center;
+        }
+        }
+        
+    </style>
+
     @yield('css')
 </head>
 <body>
@@ -50,6 +75,8 @@
             @yield('content')
         </div>
     </div>
+
+    <div style="height: 100px;"></div>
 
 
 
