@@ -216,6 +216,12 @@ a:hover {
     border-left-width: 5px;
 }
 
+@media screen and (max-width: 600px) {
+    .dashboard-item {
+        min-width: 300px;
+    }
+}
+
 .dashboard-item.red {
     border-color: red;
 }
