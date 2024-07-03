@@ -98,6 +98,14 @@
                         <option value="6">Randevu Günü</option>
                     </select>
                 </div>
+                <div class="input-container">
+                    <label for="repeat_id" class="input-label">Tekrarlama</label>
+                    <select name="repeat_id" id="repeat_id" >
+                        <option value="0">Tek Seferlik</option>
+                        <option value="1">Her Haftada Bir</option>
+                        <option value="2">İki Haftada Bir</option>
+                    </select>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
@@ -309,6 +317,18 @@
 
             $('.appointment-room').on('change', function() {
                 checkHour($(this).data('id'))
+            })
+        </script>
+
+        <script>
+            const sms = [
+                @foreach ($smses as $sms)
+                    "{{ $sms->number }}"
+                @endforeach
+            ]
+
+            $(document).ready(function() {
+                console.log(sms)
             })
         </script>
 @endsection

@@ -89,6 +89,14 @@
                         <option value="6">Randevu Günü</option>
                     </select>
                 </div>
+                <div class="input-container">
+                    <label for="repeat_id" class="input-label">Tekrarlama</label>
+                    <select name="repeat_id" id="repeat_id" >
+                        <option value="0">Tek Seferlik</option>
+                        <option value="1">Her Haftada Bir</option>
+                        <option value="2">İki Haftada Bir</option>
+                    </select>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
@@ -130,7 +138,7 @@
                     <td>{{ $appointment->date }}</td>
                     <td>{{ $appointment->hour }}</td>
                     <td>{{ $appointment->paymentType ? $appointment->paymentType->name : 'Belirsiz' }}</td>
-                    <td>{{ $appointment->price }}</td>
+                    <td>{{ $appointment->price }} ({{ $appointment->price - (($appointment->price / 100) * $settings->tax) }})</td>
                     <td>
                         <div class="table-actions">
                             <a class="edit-action" data-bs-toggle="modal" data-bs-target="#editModal-{{ $appointment->id }}">

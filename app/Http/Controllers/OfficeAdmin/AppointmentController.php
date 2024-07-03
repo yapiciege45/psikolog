@@ -54,7 +54,11 @@ class AppointmentController extends Controller
             $start->addMinutes(30);
         }
 
-        return view('office.admin.appointment.index', compact('hours', 'payment_types', 'users', 'office', 'appointments', 'types', 'rooms', 'applications'));
+        $smses = Sms::where('date', Carbon::today()->toDateString())->where('is_sended', 0)->get();
+
+        $today = Carbon::today()->toDateString();
+
+        return view('office.admin.appointment.index', compact('today', 'hours', 'payment_types', 'users', 'office', 'appointments', 'types', 'rooms', 'applications', 'smses'));
     }
 
     /**
@@ -123,6 +127,32 @@ class AppointmentController extends Controller
                 }
 
                 $sms->save();
+            }
+
+            if ($request->repeat_id != '0') {
+                $startDate = Carbon::parse($request->date);
+                $endDate = $startDate->copy()->addMonths(6);
+                $interval = ($request->repeat_id == '1') ? 1 : 2;
+            
+                while ($startDate->lessThanOrEqualTo($endDate)) {
+                    $newAppointment = new Appointment();
+            
+                    $newAppointment->user_id = $request->user_id;
+                    $newAppointment->client_name = $request->client_name;
+                    $newAppointment->client_number = $request->client_number;
+                    $newAppointment->client_email = $request->client_email;
+                    $newAppointment->partners_name = $request->partners_name;
+                    $newAppointment->type_id = $request->type_id;
+                    $newAppointment->room_id = $request->room_id;
+                    $newAppointment->date = $startDate->toDateString();
+                    $newAppointment->hour = $request->hour;
+                    $newAppointment->price = $request->price;
+                    $newAppointment->payment_type_id = $request->payment_type_id;
+            
+                    $newAppointment->save();
+            
+                    $startDate->addWeeks($interval);
+                }
             }
 
             

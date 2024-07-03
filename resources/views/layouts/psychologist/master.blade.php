@@ -120,14 +120,30 @@
         @endif
 
         <script>
-            // Initialize DataTable
-            let table = new DataTable('#table', {
+            $(document).ready(() => {
+                // Initialize DataTable
+                let table = new DataTable('#table', {
                     responsive: true,
                     dom: 'Bfrtip',
                     buttons: [
                         'excel', 'pdf', 'print'
                     ]
                 });
+
+                
+
+                
+            })
+
+            @if (isset($today))
+                    console.log($('#dt-search-0'))
+                    setTimeout(() => {
+                        console.log($('#dt-search-0'))
+                        $('#dt-search-0').val("{{ $today }}").trigger("input")
+                    }, 1000);
+                @endif
+            
+            
             
         </script>
 
