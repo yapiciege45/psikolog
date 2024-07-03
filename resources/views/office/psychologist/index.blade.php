@@ -61,7 +61,6 @@
         var calendarEl = document.getElementById('calendar');
         var calendar = new FullCalendar.Calendar(calendarEl, {
           initialView: 'dayGridMonth',
-          timezone: 'UTC',
           events: [
                 @foreach ($appointments as $appointment)
                     {
