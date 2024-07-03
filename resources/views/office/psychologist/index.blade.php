@@ -50,7 +50,7 @@
    
 </div>
 
-<div id="calendar"></div>
+<div id="calendar" style="margin-top: 50px;"></div>
 @endsection
 
 
@@ -59,8 +59,16 @@
 
     document.addEventListener('DOMContentLoaded', function() {
         var calendarEl = document.getElementById('calendar');
+        var isMobile = window.innerWidth < 800;
+
         var calendar = new FullCalendar.Calendar(calendarEl, {
-          initialView: 'dayGridMonth',
+            initialView: isMobile ? 'timeGridDay' : 'dayGridMonth', // Günlük görünüm
+            headerToolbar: {
+                left: 'prev,next today', // Önceki ve sonraki günlere gitmek için düğmeler
+                center: 'title',
+                right: isMobile ? 'timeGridDay' : 'dayGridMonth' // Görünüm türü
+            },
+            height: isMobile ? '500px' : 'auto',
           events: [
                 @foreach ($appointments as $appointment)
                     {
