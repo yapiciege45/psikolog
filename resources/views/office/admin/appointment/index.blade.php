@@ -149,7 +149,7 @@
                     <td>{{ $appointment->date }}</td>
                     <td>{{ $appointment->hour }}</td>
                     <td>{{ $appointment->paymentType ? $appointment->paymentType->name : 'Belirsiz' }}</td>
-                    <td>{{ $appointment->price }}</td>
+                    <td>{{ $appointment->price }} ({{ $appointment->price - (($appointment->price / 100) * $settings->tax) }})</td>
                     <td>
                         <div class="table-actions">
                             <a class="edit-action" data-bs-toggle="modal" data-bs-target="#editModal-{{ $appointment->id }}">

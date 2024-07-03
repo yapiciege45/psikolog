@@ -58,7 +58,9 @@ class AppointmentController extends Controller
 
         $today = Carbon::today()->toDateString();
 
-        return view('office.admin.appointment.index', compact('today', 'hours', 'payment_types', 'users', 'office', 'appointments', 'types', 'rooms', 'applications', 'smses'));
+        $settings = OfficeSetting::where('office_id', $office->id)->first();
+
+        return view('office.admin.appointment.index', compact('settings', 'today', 'hours', 'payment_types', 'users', 'office', 'appointments', 'types', 'rooms', 'applications', 'smses'));
     }
 
     /**
