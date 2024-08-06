@@ -64,7 +64,7 @@ class PsychologistController extends Controller
             return to_route('dashboard.psychologist.index')->with(['status' => 'success', 'message' => 'Psikolog başarıyla oluşturuldu.']);
     
         } catch (Exception $e) {
-            dd($e);
+            
             return to_route('dashboard.psychologist.index')->with(['status' => 'error', 'message' => 'Psikolog oluşturma başarısız.']);
         }
     }
@@ -136,7 +136,7 @@ class PsychologistController extends Controller
             return to_route('dashboard.psychologist.index')->with(['status' => 'success', 'message' => 'Psikolog başarıyla güncellendi.']);
     
         } catch (Exception $e) {
-            dd($e);
+            
             return to_route('dashboard.psychologist.index')->with(['status' => 'error', 'message' => 'Psikolog güncelleme başarısız.']);
         }
     }

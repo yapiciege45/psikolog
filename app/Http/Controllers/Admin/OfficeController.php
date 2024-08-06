@@ -65,7 +65,7 @@ class OfficeController extends Controller
             return to_route('dashboard.office.index')->with(['status' => 'success', 'message' => 'Ofis başarıyla oluşturuldu.']);
     
         } catch (Exception $e) {
-            dd($e);
+            
             return to_route('dashboard.office.index')->with(['status' => 'error', 'message' => 'Ofis oluşturma başarısız.']);
         }
     }
@@ -123,7 +123,7 @@ class OfficeController extends Controller
             return to_route('dashboard.office.index')->with(['status' => 'success', 'message' => 'Ofis başarıyla güncellendi.']);
     
         } catch (Exception $e) {
-            dd($e);
+            
             return to_route('dashboard.office.index')->with(['status' => 'error', 'message' => 'Ofis güncelleme başarısız.']);
         }
     }

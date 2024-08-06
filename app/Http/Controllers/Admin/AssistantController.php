@@ -64,7 +64,7 @@ class AssistantController extends Controller
             return to_route('dashboard.assistant.index')->with(['status' => 'success', 'message' => 'Asistan başarıyla oluşturuldu.']);
     
         } catch (Exception $e) {
-            dd($e);
+            
             return to_route('dashboard.assistant.index')->with(['status' => 'error', 'message' => 'Asistan oluşturma başarısız.']);
         }
     }
@@ -134,7 +134,7 @@ class AssistantController extends Controller
             return to_route('dashboard.assistant.index')->with(['status' => 'success', 'message' => 'Asistan başarıyla güncellendi.']);
     
         } catch (Exception $e) {
-            dd($e);
+            
             return to_route('dashboard.assistant.index')->with(['status' => 'error', 'message' => 'Asistan güncelleme başarısız.']);
         }
     }

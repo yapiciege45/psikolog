@@ -47,7 +47,7 @@ class QuestionController extends Controller
             return to_route('dashboard.question.index')->with(['status' => 'success', 'message' => 'Soru başarıyla oluşturuldu.']);
     
         } catch (Exception $e) {
-            dd($e);
+            
             return to_route('dashboard.question.index')->with(['status' => 'error', 'message' => 'Soru oluşturma başarısız.']);
         }
     }
@@ -88,7 +88,7 @@ class QuestionController extends Controller
             return to_route('dashboard.question.index')->with(['status' => 'success', 'message' => 'Soru başarıyla güncellendi.']);
     
         } catch (Exception $e) {
-            dd($e);
+            
             return to_route('dashboard.question.index')->with(['status' => 'error', 'message' => 'Soru güncelleme başarısız.']);
         }
     }

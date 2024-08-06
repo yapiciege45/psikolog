@@ -49,7 +49,7 @@ class OfficeBranchController extends Controller
             return to_route('dashboard.branch.index')->with(['status' => 'success', 'message' => 'Şube başarıyla oluşturuldu.']);
     
         } catch (Exception $e) {
-            dd($e);
+            
             return to_route('dashboard.branch.index')->with(['status' => 'error', 'message' => 'Şube oluşturma başarısız.']);
         }
     }

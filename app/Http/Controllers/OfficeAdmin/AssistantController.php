@@ -68,7 +68,7 @@ class AssistantController extends Controller
             return to_route('office.dashboard.assistant.index', ['slug' => $request->user()->office->slug])->with(['status' => 'success', 'message' => 'Asistan başarıyla oluşturuldu.']);
     
         } catch (Exception $e) {
-            dd($e);
+            
             return to_route('office.dashboard.assistant.index', ['slug' => $request->user()->office->slug])->with(['status' => 'error', 'message' => 'Asistan oluşturma başarısız.']);
         }
     }
@@ -139,7 +139,7 @@ class AssistantController extends Controller
             return to_route('office.dashboard.assistant.index', ['slug' => $request->user()->office->slug])->with(['status' => 'success', 'message' => 'Asistan başarıyla güncellendi.']);
     
         } catch (Exception $e) {
-            dd($e);
+            
             return to_route('office.dashboard.assistant.index', ['slug' => $request->user()->office->slug])->with(['status' => 'error', 'message' => 'Asistan güncelleme başarısız.']);
         }
     }

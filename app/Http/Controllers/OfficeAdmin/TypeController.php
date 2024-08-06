@@ -53,7 +53,7 @@ class TypeController extends Controller
             return to_route('office.dashboard.type.index', ['slug' => $request->user()->office->slug])->with(['status' => 'success', 'message' => 'Randevu türü başarıyla oluşturuldu.']);
     
         } catch (Exception $e) {
-            dd($e);
+            
             return to_route('office.dashboard.type.index', ['slug' => $request->user()->office->slug])->with(['status' => 'error', 'message' => 'Randevu türü oluşturma başarısız.']);
         }
     }
@@ -91,7 +91,7 @@ class TypeController extends Controller
             return to_route('office.dashboard.type.index', ['slug' => $request->user()->office->slug])->with(['status' => 'success', 'message' => 'Seans türü başarıyla güncellendi.']);
     
         } catch (Exception $e) {
-            dd($e);
+            
             return to_route('office.dashboard.type.index', ['slug' => $request->user()->office->slug])->with(['status' => 'error', 'message' => 'Seans türü güncelleme başarısız.']);
         }
     }

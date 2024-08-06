@@ -164,7 +164,7 @@ class AppointmentController extends Controller
             return to_route('office.dashboard.appointment.index', ['slug' => $request->user()->office->slug])->with(['status' => 'success', 'message' => 'Randevu başarıyla oluşturuldu.']);
     
         } catch (Exception $e) {
-            dd($e);
+            
             return to_route('office.dashboard.appointment.index', ['slug' => $request->user()->office->slug])->with(['status' => 'error', 'message' => 'Randevu oluşturma başarısız.']);
         }
     }
@@ -212,7 +212,7 @@ class AppointmentController extends Controller
             return to_route('office.dashboard.appointment.index', ['slug' => $request->user()->office->slug])->with(['status' => 'success', 'message' => 'Randevu başarıyla güncellendi.']);
     
         } catch (Exception $e) {
-            dd($e);
+            
             return to_route('office.dashboard.appointment.index', ['slug' => $request->user()->office->slug])->with(['status' => 'error', 'message' => 'Randevu güncelleme başarısız.']);
         }
     }

@@ -53,7 +53,7 @@ class RoomController extends Controller
             return to_route('office.dashboard.room.index', ['slug' => $request->user()->office->slug])->with(['status' => 'success', 'message' => 'Oda başarıyla oluşturuldu.']);
     
         } catch (Exception $e) {
-            dd($e);
+            
             return to_route('office.dashboard.room.index', ['slug' => $request->user()->office->slug])->with(['status' => 'error', 'message' => 'Oda oluşturma başarısız.']);
         }
     }
@@ -93,7 +93,7 @@ class RoomController extends Controller
             return to_route('office.dashboard.room.index', ['slug' => $request->user()->office->slug])->with(['status' => 'success', 'message' => 'Oda başarıyla güncellendi.']);
     
         } catch (Exception $e) {
-            dd($e);
+            
             return to_route('office.dashboard.room.index', ['slug' => $request->user()->office->slug])->with(['status' => 'error', 'message' => 'Oda güncelleme başarısız.']);
         }
     }

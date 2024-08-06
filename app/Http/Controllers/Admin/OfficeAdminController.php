@@ -64,7 +64,7 @@ class OfficeAdminController extends Controller
             return to_route('dashboard.office_admin.index')->with(['status' => 'success', 'message' => 'Ofis Admini başarıyla oluşturuldu.']);
     
         } catch (Exception $e) {
-            dd($e);
+            
             return to_route('dashboard.office_admin.index')->with(['status' => 'error', 'message' => 'Ofis Admini oluşturma başarısız.']);
         }
     }
@@ -112,7 +112,7 @@ class OfficeAdminController extends Controller
             return to_route('dashboard.psychologist.index')->with(['status' => 'success', 'message' => 'Ofis Admin başarıyla güncellendi.']);
     
         } catch (Exception $e) {
-            dd($e);
+            
             return to_route('dashboard.psychologist.index')->with(['status' => 'error', 'message' => 'Ofis Admin güncelleme başarısız.']);
         }
     }
