@@ -88,14 +88,10 @@
         height: isMobile ? '500px' : 'auto',
         events: [
             @foreach ($appointments as $appointment)
-            <?php
-                $endHour = \Carbon\Carbon::createFromFormat('H:i', $appointment->hour)->addMinutes(30)->format('H:i');
-            ?>
             {
                 id: {{ $appointment->id }},
                 title: "{{ $appointment->user->name ?? 'Bilinmiyor' }}",
                 start: "{{ $appointment->date ?? '' }}T{{ $appointment->hour ?? '00:00' }}:00",
-                end: "{{ $appointment->date ?? '' }}T{{ $endHour ?? '00:00' }}:00",
                 location: "{{ $appointment->room->name ?? 'Oda yok' }}",
                 backgroundColor: "{{ $appointment->room->color ?? '#000080' }}",
                 borderColor: '#3788d8',
