@@ -134,14 +134,6 @@
 
                 
             })
-
-            @if (isset($today))
-                    console.log($('#dt-search-0'))
-                    setTimeout(() => {
-                        console.log($('#dt-search-0'))
-                        $('#dt-search-0').val("{{ $today }}").trigger("input")
-                    }, 1000);
-                @endif
             
             
             

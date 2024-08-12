@@ -45,6 +45,7 @@ class RoomController extends Controller
             $room = new Room();
 
             $room->name = $request->name;
+            $room->color = $request->color;
             $room->description = $request->description;
             $room->is_active = 1;
 
@@ -83,6 +84,7 @@ class RoomController extends Controller
             $room = Room::where('id', $request->id)->first();
 
             $room->name = $request->name;
+            $room->color = $request->color;
             $room->description = $request->description;
             $room->is_active = 1;
 

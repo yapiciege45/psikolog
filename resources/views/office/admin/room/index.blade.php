@@ -29,6 +29,10 @@
                     <label for="description" class="input-label">Açıklama</label>
                     <input name="description" type="text" />
                 </div>
+                <div class="input-container">
+                    <label for="color" class="input-label">Renk</label>
+                    <input name="color" type="color" />
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
@@ -44,6 +48,7 @@
                 <td>ID</td>
                 <td>İsim</td>
                 <td>Açıklama</td>
+                <td>Renk</td>
                 <td>İşlemler</td>
             </tr>
         </thead>
@@ -53,6 +58,9 @@
                     <td>{{ $room->id }}</td>
                     <td>{{ $room->name }}</td>
                     <td>{{ $room->description }}</td>
+                    <td>
+                      <div style="width: 16px;height:16px;border-radius:50%;background-color: {{$room->color}};"></div>
+                    </td>
                     <td>
                         <div class="table-actions">
                             <a class="edit-action" data-bs-toggle="modal" data-bs-target="#editModal-{{ $room->id }}">
@@ -88,6 +96,10 @@
                     <div class="input-container">
                         <label for="description" class="input-label">Açıklama</label>
                         <input name="description" type="text" value="{{ $room->email }}" />
+                    </div>
+                    <div class="input-container">
+                        <label for="color" class="input-label">Renk</label>
+                        <input name="color" type="color" value="{{ $room->color }}" />
                     </div>
                 </div>
                 <div class="modal-footer">

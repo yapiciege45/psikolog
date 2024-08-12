@@ -64,9 +64,84 @@
             </div>
         </div>
     </div>
+
+    <div id="calendar" style="margin-top: 50px;"></div>
+
 @endsection
 
 
 @section('js')
+<script>
 
+    document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+        var isMobile = window.innerWidth < 800;
+
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            locale: "tr",
+            initialView: isMobile ? 'timeGridDay' : 'timeGridDay', // Günlük görünüm
+            headerToolbar: {
+                left: 'prev,next today', // Önceki ve sonraki günlere gitmek için düğmeler
+                center: 'title',
+                right: isMobile ? 'timeGridDay' : 'timeGridDay' // Görünüm türü
+            },
+            height: isMobile ? '500px' : 'auto',
+          events: [
+                @foreach ($todayAppointments as $appointment)
+                <?php
+                  $endHour = \Carbon\Carbon::createFromFormat('H:i', $appointment->hour)->addMinutes(30)->format('H:i');
+                ?>
+                    {
+                        id: {{ $appointment->id }},
+                        title: "{{ $appointment->user->name }}",
+                        start: "{{ $appointment->date }}T{{ $appointment->hour }}:00",
+                        end: "{{ $appointment->date }}T{{ $endHour }}:00",
+                        location: "{{ $appointment->room->name }}",
+                        backgroundColor: "{{ $appointment->room->color }}",
+                        borderColor: '#3788d8',
+                        textColor: '#ffffff',
+                        client_name: "{{ $appointment->client_name }}",
+                        client_number: "{{ $appointment->client_number }}",
+                        note: "{{ $appointment->note }}",
+                        room_name: "{{ $appointment->room->name }}",
+                    },
+                @endforeach
+            ],
+        eventDidMount: function(info) {
+            // Tooltip içeriğini oluştur
+            var tooltipContent = `
+                <div>
+                    <strong>İsim:</strong> ${info.event.extendedProps.client_name}<br>
+                    <strong>Numara:</strong> ${info.event.extendedProps.client_number}<br>
+                    <strong>Not:</strong> ${info.event.extendedProps.note}<br>
+                    <strong>Oda:</strong> ${info.event.extendedProps.room_name}
+                </div>
+            `;
+
+            // Tooltip'i oluştur
+            var tooltip = new bootstrap.Tooltip(info.el, {
+                title: tooltipContent,
+                html: true,
+                placement: 'top',
+                trigger: 'hover',
+                container: 'body'
+            });
+        }
+        });
+        calendar.render();
+      });
+
+      const events = [
+                @foreach ($todayAppointments as $appointment)
+                    {
+                        title: "{{ $appointment->client_name }}",
+                        start: "{{ $appointment->date }}",
+                        location: "{{ $appointment->room->name }}",
+                        backgroundColor: '#3788d8',
+                        borderColor: '#3788d8',
+                        textColor: '#ffffff'
+                    },
+                @endforeach
+            ]
+</script>
 @endsection
