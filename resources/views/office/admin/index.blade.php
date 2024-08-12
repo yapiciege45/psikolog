@@ -97,7 +97,7 @@
                         start: "{{ $appointment->date }}T{{ $appointment->hour }}:00",
                         end: "{{ $appointment->date }}T{{ $endHour }}:00",
                         location: "{{ $appointment->room->name }}",
-                        backgroundColor: "{{ $appointment->room->color }}",
+                        backgroundColor: "{{ $appointment->room->color ?? "#000080" }}",
                         borderColor: '#3788d8',
                         textColor: '#ffffff',
                         client_name: "{{ $appointment->client_name ?? 'Bilinmiyor' }}",
