@@ -87,7 +87,7 @@
             },
             height: isMobile ? '500px' : 'auto',
           events: [
-                @foreach ($todayAppointments as $appointment)
+                @foreach ($appointments as $appointment)
                 <?php
                   $endHour = \Carbon\Carbon::createFromFormat('H:i', $appointment->hour)->addMinutes(30)->format('H:i');
                 ?>
@@ -100,10 +100,10 @@
                         backgroundColor: "{{ $appointment->room->color }}",
                         borderColor: '#3788d8',
                         textColor: '#ffffff',
-                        client_name: "{{ $appointment->client_name }}",
-                        client_number: "{{ $appointment->client_number }}",
-                        note: "{{ $appointment->note }}",
-                        room_name: "{{ $appointment->room->name }}",
+                        client_name: "{{ $appointment->client_name ?? 'Bilinmiyor' }}",
+                        client_number: "{{ $appointment->client_number ?? 'Bilinmiyor' }}",
+                        note: "{{ $appointment->note ?? 'Not Yok' }}",
+                        room_name: "{{ $appointment->room->name ?? 'Bilinmiyor' }}",
                     },
                 @endforeach
             ],
@@ -132,7 +132,7 @@
       });
 
       const events = [
-                @foreach ($todayAppointments as $appointment)
+                @foreach ($appointments as $appointment)
                     {
                         title: "{{ $appointment->client_name }}",
                         start: "{{ $appointment->date }}",
