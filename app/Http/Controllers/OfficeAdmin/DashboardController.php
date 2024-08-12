@@ -30,6 +30,6 @@ class DashboardController extends Controller
 
         $totalPriceCard = $todayAppointmentsCard->sum('price');
 
-        return view('office.admin.index', compact('office', 'appointments', 'totalPrice', 'todayAppointments', 'assistants', 'psychologists', 'todayAppointmentsCard', 'todayAppointmentsCash', 'totalPriceCard', 'totalPriceCash'));
+        return view('office.admin.index', compact('office', 'totalPrice', 'todayAppointments', 'assistants', 'psychologists', 'todayAppointmentsCard', 'todayAppointmentsCash', 'totalPriceCard', 'totalPriceCash'));
     }
 }
