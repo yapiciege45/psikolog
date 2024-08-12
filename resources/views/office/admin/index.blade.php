@@ -85,6 +85,7 @@
             center: 'title',
             right: isMobile ? 'timeGridDay' : 'timeGridDay' 
         },
+        slotDuration: '00:30:00',
         height: isMobile ? '500px' : 'auto',
         events: [
             @foreach ($appointments as $appointment)
