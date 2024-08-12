@@ -74,41 +74,40 @@
 <script>
 
     document.addEventListener('DOMContentLoaded', function() {
-        var calendarEl = document.getElementById('calendar');
-        var isMobile = window.innerWidth < 800;
+    var calendarEl = document.getElementById('calendar');
+    var isMobile = window.innerWidth < 800;
 
-        var calendar = new FullCalendar.Calendar(calendarEl, {
-            locale: "tr",
-            initialView: isMobile ? 'timeGridDay' : 'timeGridDay', // Günlük görünüm
-            headerToolbar: {
-                left: 'prev,next today', // Önceki ve sonraki günlere gitmek için düğmeler
-                center: 'title',
-                right: isMobile ? 'timeGridDay' : 'timeGridDay' // Görünüm türü
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+        locale: "tr",
+        initialView: isMobile ? 'timeGridDay' : 'timeGridDay', 
+        headerToolbar: {
+            left: 'prev,next today', 
+            center: 'title',
+            right: isMobile ? 'timeGridDay' : 'timeGridDay' 
+        },
+        height: isMobile ? '500px' : 'auto',
+        events: [
+            @foreach ($appointments as $appointment)
+            <?php
+                $endHour = \Carbon\Carbon::createFromFormat('H:i', $appointment->hour)->addMinutes(30)->format('H:i');
+            ?>
+            {
+                id: {{ $appointment->id }},
+                title: "{{ $appointment->user->name ?? 'Bilinmiyor' }}",
+                start: "{{ $appointment->date ?? '' }}T{{ $appointment->hour ?? '00:00' }}:00",
+                end: "{{ $appointment->date ?? '' }}T{{ $endHour ?? '00:00' }}:00",
+                location: "{{ $appointment->room->name ?? 'Oda yok' }}",
+                backgroundColor: "{{ $appointment->room->color ?? '#000080' }}",
+                borderColor: '#3788d8',
+                textColor: '#ffffff',
+                client_name: "{{ $appointment->client_name ?? 'Bilinmiyor' }}",
+                client_number: "{{ $appointment->client_number ?? 'Bilinmiyor' }}",
+                note: "{{ $appointment->note ?? 'Not Yok' }}",
+                room_name: "{{ $appointment->room->name ?? 'Bilinmiyor' }}",
             },
-            height: isMobile ? '500px' : 'auto',
-          events: [
-                @foreach ($appointments as $appointment)
-                <?php
-                  $endHour = \Carbon\Carbon::createFromFormat('H:i', $appointment->hour)->addMinutes(30)->format('H:i');
-                ?>
-                    {
-                        id: {{ $appointment->id }},
-                        title: "{{ $appointment->user->name }}",
-                        start: "{{ $appointment->date }}T{{ $appointment->hour ?? '00:00' }}:00",
-                        end: "{{ $appointment->date }}T{{ $endHour ?? '00:00' }}:00",
-                        location: "{{ $appointment->room->name ?? 'Oda yok' }}",
-                        backgroundColor: "{{ $appointment->room->color ?? '#000080' }}",
-                        borderColor: '#3788d8',
-                        textColor: '#ffffff',
-                        client_name: "{{ $appointment->client_name ?? 'Bilinmiyor' }}",
-                        client_number: "{{ $appointment->client_number ?? 'Bilinmiyor' }}",
-                        note: "{{ $appointment->note ?? 'Not Yok' }}",
-                        room_name: "{{ $appointment->room->name ?? 'Bilinmiyor' }}",
-                    },
-                @endforeach
-            ],
+            @endforeach
+        ],
         eventDidMount: function(info) {
-            // Tooltip içeriğini oluştur
             var tooltipContent = `
                 <div>
                     <strong>İsim:</strong> ${info.event.extendedProps.client_name}<br>
@@ -118,7 +117,6 @@
                 </div>
             `;
 
-            // Tooltip'i oluştur
             var tooltip = new bootstrap.Tooltip(info.el, {
                 title: tooltipContent,
                 html: true,
@@ -127,9 +125,10 @@
                 container: 'body'
             });
         }
-        });
-        calendar.render();
-      });
+    });
+    calendar.render();
+});
+
 
       const events = [
                 @foreach ($appointments as $appointment)
