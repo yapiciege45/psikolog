@@ -19,6 +19,7 @@ class DashboardController extends Controller
         $assistants = User::where('is_psychologist', 1)->get();
 
         $todayAppointments = Appointment::where('date', Carbon::today()->toDateString())->get();
+        $appointments = Appointment::all();
 
         $totalPrice = $todayAppointments->sum('price');
 
@@ -30,6 +31,6 @@ class DashboardController extends Controller
 
         $totalPriceCard = $todayAppointmentsCard->sum('price');
 
-        return view('office.admin.index', compact('office', 'totalPrice', 'todayAppointments', 'assistants', 'psychologists', 'todayAppointmentsCard', 'todayAppointmentsCash', 'totalPriceCard', 'totalPriceCash'));
+        return view('office.admin.index', compact('office', 'appointments', 'totalPrice', 'todayAppointments', 'assistants', 'psychologists', 'todayAppointmentsCard', 'todayAppointmentsCash', 'totalPriceCard', 'totalPriceCash'));
     }
 }

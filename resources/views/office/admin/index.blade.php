@@ -87,7 +87,7 @@
         },
         height: isMobile ? '500px' : 'auto',
         events: [
-            @foreach ($todayAppointments as $appointment)
+            @foreach ($appointments as $appointment)
             <?php
                 $endHour = \Carbon\Carbon::createFromFormat('H:i', $appointment->hour)->addMinutes(30)->format('H:i');
             ?>
@@ -131,7 +131,7 @@
 
 
       const events = [
-                @foreach ($todayAppointments as $appointment)
+                @foreach ($appointments as $appointment)
                     {
                         title: "{{ $appointment->client_name }}",
                         start: "{{ $appointment->date }}",
