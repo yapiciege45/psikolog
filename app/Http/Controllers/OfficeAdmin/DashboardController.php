@@ -21,6 +21,8 @@ class DashboardController extends Controller
         $todayAppointments = Appointment::where('date', Carbon::today()->toDateString())->get();
         $appointments = Appointment::all();
 
+        dd($appointments);
+
         $totalPrice = $todayAppointments->sum('price');
 
         $todayAppointmentsCash = Appointment::where('date', Carbon::today()->toDateString())->where('payment_type_id', 1)->get();
