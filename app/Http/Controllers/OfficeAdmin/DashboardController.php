@@ -19,9 +19,8 @@ class DashboardController extends Controller
         $assistants = User::where('is_psychologist', 1)->get();
 
         $todayAppointments = Appointment::where('date', Carbon::today()->toDateString())->get();
-        $appointments = Appointment::all();
 
-        dd($appointments);
+        dd($todayAppointments);
 
         $totalPrice = $todayAppointments->sum('price');
 
