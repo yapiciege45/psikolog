@@ -171,7 +171,7 @@
                 <div class="input-container">
                     <label for="user_id" class="input-label">Psikolog</label>
                     <select name="user_id" id="user_id">
-                        <option value="0">Seçiniz</option>
+                        <option value="">Seçiniz</option>
                         @foreach ($assistants as $assistant)
                             <option value="{{ $assistant->id }}" ${info.event.extendedProps.user_name == "{{ $assistant->name }}" && 'selected'}>{{ $assistant->name }}</option>
                         @endforeach
@@ -196,7 +196,7 @@
                 <div class="input-container">
                     <label for="type_id" class="input-label">Seans Türü</label>
                     <select name="type_id" id="type_id">
-                        <option value="0">Seçiniz</option>
+                        <option value="">Seçiniz</option>
                         @foreach ($types as $type)
                             <option value="{{ $type->id }}" ${info.event.extendedProps.type_id == "{{ $type->id }}" && "selected"}>{{ $type->name }}</option>
                         @endforeach
@@ -205,7 +205,7 @@
                 <div class="input-container">
                     <label for="room_id" class="input-label">Oda Türü</label>
                     <select name="room_id" id="room_id" class="appointment-room" data-id="0">
-                        <option value="0">Seçiniz</option>
+                        <option value="">Seçiniz</option>
                         @foreach ($rooms as $room)
                             <option value="{{ $room->id }}" ${info.event.extendedProps.room_id == "{{ $room->id }}" && "selected"}>{{ $room->name }}</option>
                         @endforeach
@@ -289,7 +289,7 @@
                 <div class="input-container">
                     <label for="user_id" class="input-label">Psikolog</label>
                     <select name="user_id" id="user_id">
-                        <option value="0">Seçiniz</option>
+                        <option value="">Seçiniz</option>
                         @foreach ($assistants as $assistant)
                             <option value="{{ $assistant->id }}">{{ $assistant->name }}</option>
                         @endforeach
@@ -314,7 +314,7 @@
                 <div class="input-container">
                     <label for="type_id" class="input-label">Seans Türü</label>
                     <select name="type_id" id="type_id">
-                        <option value="0">Seçiniz</option>
+                        <option value="">Seçiniz</option>
                         @foreach ($types as $type)
                             <option value="{{ $type->id }}">{{ $type->name }}</option>
                         @endforeach
@@ -323,7 +323,7 @@
                 <div class="input-container">
                     <label for="room_id" class="input-label">Oda Türü</label>
                     <select name="room_id" id="room_id" class="appointment-room" data-id="0">
-                        <option value="0">Seçiniz</option>
+                        <option value="">Seçiniz</option>
                         @foreach ($rooms as $room)
                             <option value="{{ $room->id }}">{{ $room->name }}</option>
                         @endforeach
@@ -456,7 +456,7 @@
                     $(`.appointment-hour[data-id="${id}"]`).html('')
 
                     $(`.appointment-hour[data-id="${id}"]`).append(`
-                        <option value="0">Seçiniz</option>
+                        <option value="">Seçiniz</option>
                     `)
 
                     applyingHours.forEach(x => {

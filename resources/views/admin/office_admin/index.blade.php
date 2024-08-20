@@ -40,7 +40,7 @@
                 <div class="input-container">
                     <label for="office_id" class="input-label">Ofis</label>
                     <select name="office_id" id="office_id">
-                        <option value="0">Seçiniz</option>
+                        <option value="">Seçiniz</option>
                         @foreach ($offices as $office)
                             <option value="{{ $office->id }}">{{ $office->name }}</option>
                         @endforeach
@@ -121,7 +121,7 @@
                     <div class="input-container">
                         <label for="office_id" class="input-label">Ofis</label>
                         <select name="office_id" id="office_id" class="office_update_id" data-id="{{ $office_admin->id }}" >
-                            <option value="0">Seçiniz</option>
+                            <option value="">Seçiniz</option>
                             @foreach ($offices as $office)
                                 <option value="{{ $office->id }}" @selected($office->id == $office_admin->office->id)>{{ $office->name }}</option>
                             @endforeach
