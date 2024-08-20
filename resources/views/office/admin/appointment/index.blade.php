@@ -24,7 +24,7 @@
                 <div class="input-container">
                     <label for="user_id" class="input-label">Psikolog</label>
                     <select name="user_id" id="user_id">
-                        <option value="0">Seç</option>
+                        <option value="0">Seçiniz</option>
                         @foreach ($users as $user)
                             <option value="{{ $user->id }}">{{ $user->name }}</option>
                         @endforeach
@@ -49,7 +49,7 @@
                 <div class="input-container">
                     <label for="type_id" class="input-label">Seans Türü</label>
                     <select name="type_id" id="type_id">
-                        <option value="0">Seç</option>
+                        <option value="0">Seçiniz</option>
                         @foreach ($types as $type)
                             <option value="{{ $type->id }}">{{ $type->name }}</option>
                         @endforeach
@@ -58,7 +58,7 @@
                 <div class="input-container">
                     <label for="room_id" class="input-label">Oda Türü</label>
                     <select name="room_id" id="room_id" class="appointment-room" data-id="0">
-                        <option value="0">Seç</option>
+                        <option value="0">Seçiniz</option>
                         @foreach ($rooms as $room)
                             <option value="{{ $room->id }}">{{ $room->name }}</option>
                         @endforeach
@@ -115,7 +115,7 @@
         </div>
       </form>
 
-    <table id="table" class="stripe" style="width:100%">
+    <table id="table-appointments" class="stripe" style="width:100%">
         <thead>
             <tr>
                 <td>ID</td>
@@ -181,7 +181,7 @@
                     <div class="input-container">
                         <label for="user_id" class="input-label">Psikolog</label>
                         <select name="user_id" id="user_id">
-                            <option value="0">Seç</option>
+                            <option value="0">Seçiniz</option>
                             @foreach ($users as $user)
                                 <option value="{{ $user->id }}" @selected($user->id == $appointment->user_id)>{{ $user->name }}</option>
                             @endforeach
@@ -206,7 +206,7 @@
                     <div class="input-container">
                         <label for="type_id" class="input-label">Seans Türü</label>
                         <select name="type_id" id="type_id">
-                            <option value="0">Seç</option>
+                            <option value="0">Seçiniz</option>
                             @foreach ($types as $type)
                                 <option value="{{ $type->id }}" @selected($type->id == $appointment->type_id)>{{ $type->name }}</option>
                             @endforeach
@@ -215,7 +215,7 @@
                     <div class="input-container">
                         <label for="room_id" class="input-label">Oda Türü</label>
                         <select name="room_id" id="room_id" class="appointment-room" data-id="{{ $appointment->id }}">
-                            <option value="0">Seç</option>
+                            <option value="0">Seçiniz</option>
                             @foreach ($rooms as $room)
                                 <option value="{{ $room->id }}" @selected($room->id == $appointment->room_id)>{{ $room->name }}</option>
                             @endforeach
@@ -228,7 +228,7 @@
                     <div class="input-container">
                         <label for="hour" class="input-label">Saat</label>
                         <select name="hour" id="hour" class="appointment-hour" data-id="{{ $appointment->id }}">
-                            <option value="0">Seç</option>
+                            <option value="0">Seçiniz</option>
                             @foreach ($hours as $hour)
                                 <option value="{{ $hour }}" @selected($hour == $appointment->hour)>{{ $hour }}</option>
                             @endforeach
@@ -297,15 +297,17 @@
 
                     console.log($(`.appointment-hour[data-id="${id}"]`))
 
+                    const val = $(`.appointment-hour[data-id="${id}"]`).val();
+
                     $(`.appointment-hour[data-id="${id}"]`).html('')
 
                     $(`.appointment-hour[data-id="${id}"]`).append(`
-                        <option value="0">Seç</option>
+                        <option value="0">Seçiniz</option>
                     `)
 
                     applyingHours.forEach(x => {
                         $(`.appointment-hour[data-id="${id}"]`).append(`
-                            <option value="${x}">${x}</option>
+                            <option value="${x}" ${val == x && 'selected'}>${x}</option>
                         `)
                     })
                 }
@@ -331,4 +333,26 @@
                 console.log(sms)
             })
         </script>
+
+        <script>
+    $(document).ready(function() {
+        // Bugünün tarihini YYYY-MM-DD formatında al
+        var today = new Date().toISOString().split('T')[0];
+
+        // DataTable'ı başlat
+        var table = $('#table-appointments').DataTable({
+            initComplete: function(settings, json) {
+                // Bugün ile eşleşen satırları filtrele
+                this.api().search(today).draw();
+            }
+        });
+
+        // Kullanıcı arama yaparsa filtreyi kaldır
+        $('#table_filter input').on('input', function() {
+            if ($(this).val() === '') {
+                table.search('').draw(); // Tüm verileri göster
+            }
+        });
+    });
+</script>
 @endsection

@@ -27,7 +27,7 @@ class AppointmentController extends Controller
 
         $office = Office::find($request->user()->office_id);
 
-        $appointments = Appointment::with(['room', 'type', 'applications', 'user'])->get();
+        $appointments = Appointment::where('user_id', $request->user()->id)->with(['room', 'type', 'applications', 'user'])->get();
 
         $types = Type::all();
 
@@ -153,11 +153,11 @@ class AppointmentController extends Controller
                 }
             }
     
-            return to_route('office.psychologist.appointment.index', ['slug' => $request->user()->office->slug])->with(['status' => 'success', 'message' => 'Randevu başarıyla oluşturuldu.']);
+            return back()->with(['status' => 'success', 'message' => 'Randevu başarıyla oluşturuldu.']);
     
         } catch (Exception $e) {
             
-            return to_route('office.psychologist.appointment.index', ['slug' => $request->user()->office->slug])->with(['status' => 'error', 'message' => 'Randevu oluşturma başarısız.']);
+            return back()->with(['status' => 'error', 'message' => 'Randevu oluşturma başarısız.']);
         }
     }
 
@@ -200,11 +200,11 @@ class AppointmentController extends Controller
 
 
     
-            return to_route('office.psychologist.appointment.index', ['slug' => $request->user()->office->slug])->with(['status' => 'success', 'message' => 'Randevu başarıyla güncellendi.']);
+            return back()->with(['status' => 'success', 'message' => 'Randevu başarıyla güncellendi.']);
     
         } catch (Exception $e) {
             
-            return to_route('office.psychologist.appointment.index', ['slug' => $request->user()->office->slug])->with(['status' => 'error', 'message' => 'Randevu güncelleme başarısız.']);
+            return back()->with(['status' => 'error', 'message' => 'Randevu güncelleme başarısız.']);
         }
     }
 
@@ -218,10 +218,10 @@ class AppointmentController extends Controller
 
             $appointment->delete();
     
-            return to_route('office.psychologist.appointment.index', ['slug' => $request->user()->office->slug])->with(['status' => 'success', 'message' => 'Randevu başarıyla silindi.']);
+            return back()->with(['status' => 'success', 'message' => 'Randevu başarıyla silindi.']);
     
         } catch (Exception $e) {
-            return to_route('office.psychologist.appointment.index', ['slug' => $request->user()->office->slug])->with(['status' => 'error', 'message' => 'Randevu silinemedi.']);
+            return back()->with(['status' => 'error', 'message' => 'Randevu silinemedi.']);
         }
     }
 }
