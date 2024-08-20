@@ -143,6 +143,7 @@
             },
             @endforeach
         ],
+        slotDuration: '01:00:00',
         eventDidMount: function(info) {
             var tooltipContent = `
                 <div>
