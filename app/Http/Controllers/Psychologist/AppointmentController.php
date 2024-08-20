@@ -48,7 +48,7 @@ class AppointmentController extends Controller
 
         while ($start->lt($end)) {
             $hours[] = $start->format('H:i');
-            $start->addMinutes(30);
+            $start->addHour();
         }
 
         $today = Carbon::today()->toDateString();
@@ -156,6 +156,8 @@ class AppointmentController extends Controller
             return back()->with(['status' => 'success', 'message' => 'Randevu başarıyla oluşturuldu.']);
     
         } catch (Exception $e) {
+
+          dd($e);
             
             return back()->with(['status' => 'error', 'message' => 'Randevu oluşturma başarısız.']);
         }

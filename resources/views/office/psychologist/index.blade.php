@@ -97,7 +97,7 @@
               $endHour = null;
 
               if($appointment->hour) {
-                $endHour = \Carbon\Carbon::createFromFormat('H:i', $appointment->hour)->addMinutes(30)->format('H:i');
+                $endHour = \Carbon\Carbon::createFromFormat('H:i', $appointment->hour)->addHour()->format('H:i');
               }
             ?>
             {
@@ -128,6 +128,7 @@
             },
             @endforeach
         ],
+        slotDuration: '01:00:00',
         eventDidMount: function(info) {
             var tooltipContent = `
                 <div>

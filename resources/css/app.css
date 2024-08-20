@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.fc-timegrid-col-events {
+    width: 80%;
+}

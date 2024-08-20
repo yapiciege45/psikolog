@@ -51,7 +51,7 @@ class AppointmentController extends Controller
 
         while ($start->lt($end)) {
             $hours[] = $start->format('H:i');
-            $start->addMinutes(30);
+            $start->addHour();
         }
 
         $smses = Sms::where('date', Carbon::today()->toDateString())->where('is_sended', 0)->get();

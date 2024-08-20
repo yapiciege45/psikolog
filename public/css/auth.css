@@ -12,13 +12,17 @@ a:hover {
     text-decoration: none;
 }
 
+.fc-timegrid-col-events {
+    width: 80%;
+}
+
 .auth-container {
     width: 100%;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url('https://wallpapers.com/images/hd/psychology-background-2h35ezbmi9cicwt3.jpg');
+    background-image: url("https://wallpapers.com/images/hd/psychology-background-2h35ezbmi9cicwt3.jpg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -39,7 +43,9 @@ a:hover {
     gap: 20px;
     width: 30%;
     align-items: center;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+        rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+        rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
 .auth-box h4 {
@@ -63,7 +69,7 @@ a:hover {
     display: flex;
     justify-content: center;
     cursor: pointer;
-    transition: .3s;
+    transition: 0.3s;
     background-color: transparent;
 }
 
